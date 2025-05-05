@@ -1,0 +1,48 @@
+name: Trigger auto deployment for backend-container-3223
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ stage-10 ]
+    paths:
+    - '**'
+    - '.github/workflows/backend-container-3223-AutoDeployTrigger-2aefd77f-c455-4403-a3fb-abdb52ac91f7.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:      
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions: 
+      id-token: write #This is required for requesting the OIDC JWT Token
+      contents: read #Required when GH token is used to authenticate with private repo
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.BACKENDCONTAINER3223_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.BACKENDCONTAINER3223_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.BACKENDCONTAINER3223_AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }}
+          _dockerfilePathKey_: _dockerfilePath_
+          registryUrl: terraformregistr323.azurecr.io
+          registryUsername: ${{ secrets.BACKENDCONTAINER3223_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.BACKENDCONTAINER3223_REGISTRY_PASSWORD }}
+          containerAppName: backend-container-3223
+          resourceGroup: stage10-terraform
+          imageToBuild: terraformregistr323.azurecr.io/backend-container-3223:${{ github.sha }}
+          _buildArgumentsKey_: |
+            _buildArgumentsValues_
+
+

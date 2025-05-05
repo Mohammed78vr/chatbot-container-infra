@@ -8,7 +8,11 @@
 chat_logs
 pdf_store
 chroma.log
-chroma_db
+ssh-keys
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
 
 # User-specific files
 *.rsuser

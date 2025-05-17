@@ -16,6 +16,7 @@ azure-keyvault-secrets==4.9.0
 pypdf==5.1.0
 python-multipart==0.0.20
 cryptography==41.0.2
+pydantic==2.9.2
 opentelemetry-api==1.29.0
 opentelemetry-sdk==1.29.0
 opentelemetry-exporter-otlp-proto-grpc==1.29.0

@@ -166,6 +166,7 @@ jupyterlab_widgets
 keyring 
 kiwisolver 
 kubernetes==32.0.1
+libkrb5-dev
 langchain==0.3.25
 langchain-chroma==0.2.4
 langchain-community==0.3.24

@@ -1,6 +1,6 @@
 subscription_id     = "<YOUR_SUBSCRIPTION_ID>" #use your subsctiption Id
 resource_group_name = "stage10-terraform"
-location            = "norwayeast"
+location            = "canadacentral"
 #======================= varibales for Vnet modules =======================
 Vnet_Name                       = "WebVnet"
 Web_app_subnet_Name             = "WebAppSubnet"
@@ -23,5 +23,5 @@ openai_key     = "<YOUR_OPENAI_KEY>"
 cosmosdb_database_name = "chathistory"
 cosmosdb_container_name = "chats"
 #======================= varibales for Cosmosdb modules =======================
-container_registry_name = "terraformregistr323"
-container_app_name = "backend-container-3223"
+container_registry_name = "terraformregistr12i"
+container_app_name = "backend-container-3242"
